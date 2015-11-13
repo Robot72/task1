@@ -35,12 +35,12 @@ class SearchProducts extends Model
     {
         return [
             'id' => 'ID',
-            'id_brand' => 'Id Brand',
-            'model' => 'Model',
-            'made_year' => 'Made Year',
-            'power' => 'Power',
-            'price' => 'Price',
-            'nameBrand' => 'Name of the brand',
+            'id_brand' => 'ИД Бренда',
+            'model' => 'Модель',
+            'made_year' => 'Дата производства',
+            'power' => 'Мощность',
+            'price' => 'Стоимость',
+            'nameBrand' => 'Название бренда',
         ];
     }
     

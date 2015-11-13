@@ -46,11 +46,11 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_brand' => 'Id Brand',
-            'model' => 'Model',
-            'made_year' => 'Made Year',
-            'power' => 'Power',
-            'price' => 'Price',
+            'id_brand' => 'Бренд',
+            'model' => 'Модель',
+            'made_year' => 'Год производства',
+            'power' => 'Мощность',
+            'price' => 'Стоимость',
         ];
     }
 

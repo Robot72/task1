@@ -42,8 +42,8 @@ class Brands extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_country' => 'Id Country',
-            'name' => 'Name',
+            'id_country' => 'Id страны',
+            'name' => 'Название',
         ];
     }
 
@@ -61,5 +61,10 @@ class Brands extends \yii\db\ActiveRecord
     public function getProducts()
     {
         return $this->hasMany(Products::className(), ['id_brand' => 'id']);
+    }
+    
+    public function getNameCountry()
+    {
+        return $this->hasOne(Countries::className(), ['id' => 'id_country'])->one()->name;
     }
 }

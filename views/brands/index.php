@@ -1,14 +1,19 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchBrands */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Brands';
+$this->title = 'Бренды';
 $this->params['breadcrumbs'][] = $this->title;
+
+$columns = [
+    'nameCountry',
+    'name'
+];
 ?>
 <div class="brands-index">
 
@@ -16,21 +21,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Brands', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать бренд', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'id_country',
-            'name',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
+        'columns' => $columns
     ]); ?>
 
 </div>
