@@ -11,8 +11,8 @@ use yii\db\Migration;
  */
 class MigrationHelper extends Migration 
 {
-    protected $tableName = null;
     protected $tableOptions = null;
+    protected $tableName = null;
     /**
      * Задает конфигурацию таблиц в зависимости от используемой БД
      */
@@ -21,9 +21,5 @@ class MigrationHelper extends Migration
         if ($this->db->driverName === 'mysql') {
             $this->tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
-    }        
-    
-    public function down() {
-        $this->dropTable($this->tableName);
     }
 }

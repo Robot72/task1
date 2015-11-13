@@ -5,7 +5,7 @@ use app\components\MigrationHelper;
 
 class m151113_142158_countries extends MigrationHelper
 {
-    public $tableName = '{{%countries}}';
+    protected $tableName = '{{%countries}}';
     public function up()
     {
         $this->setTableOptions();
@@ -15,7 +15,7 @@ class m151113_142158_countries extends MigrationHelper
             'name' => Schema::TYPE_STRING,
         ], $this->tableOptions);
         
-        $this->createIndex('idx_countries_name', $this->_tableName, 'name');
+        $this->createIndex('idx_countries_name', $this->tableName, 'name');
         
         $this->insert($this->tableName, [
             'name' => 'Albania'
@@ -63,7 +63,7 @@ class m151113_142158_countries extends MigrationHelper
 
     public function down()
     {
-        parent::drop();
+        $this->dropTable($this->tableName);
     }
 
     /*
