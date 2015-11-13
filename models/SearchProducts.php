@@ -5,34 +5,45 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use app\models\Products;
 
 /**
  * SearchProducts represents the model behind the search form about `app\models\Products`.
  */
-class SearchProducts extends Products
+class SearchProducts extends Model
 {
-    /**
-     * @inheritdoc
-     */
+    public $id;
+    public $id_brand;
+    public $model;
+    public $power;
+    public $price;
+    public $made_year;
+    public $nameBrand;
+
     public function rules()
     {
         return [
             [['id', 'id_brand', 'power'], 'integer'],
-            [['model', 'made_year'], 'safe'],
+            [['model', 'made_year', 'nameBrand'], 'safe'],
             [['price'], 'number'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
+    
+    public function attributeLabels()
     {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
+        return [
+            'id' => 'ID',
+            'id_brand' => 'Id Brand',
+            'model' => 'Model',
+            'made_year' => 'Made Year',
+            'power' => 'Power',
+            'price' => 'Price',
+            'nameBrand' => 'Name of the brand',
+        ];
     }
-
+    
     /**
      * Creates data provider instance with search query applied
      *
@@ -42,10 +53,10 @@ class SearchProducts extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
-
+        $queryProducts = Products::find();
+        
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => $queryProducts,
         ]);
 
         $this->load($params);
@@ -56,15 +67,17 @@ class SearchProducts extends Products
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
+        $queryProducts->andFilterWhere([
             'id' => $this->id,
-            'id_brand' => $this->id_brand,
             'made_year' => $this->made_year,
             'power' => $this->power,
             'price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'model', $this->model]);
+        $queryProducts->andFilterWhere(['like', 'model', $this->model])
+                ->andFilterWhere(['in', 'id_brand', 
+                        (new Query())->select('id')->from('brands')->where(['like', 'name', !empty($this->nameBrand) ? $this->nameBrand : ''])
+                    ]);
 
         return $dataProvider;
     }

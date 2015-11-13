@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Products */
+/* @var $brands app\models\Brands */
 
 $this->title = 'Update Products: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'brands' => $brands,
     ]) ?>
 
 </div>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\grid\DataColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchProducts */
@@ -24,8 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'nameBrand',
+            
+            //Имя бренда
+            [
+                'class' => DataColumn::className(),
+                'attribute' => 'nameBrand',
+                'filter' => Html::activeInput('text', $searchModel, 'nameBrand', ['class' => 'form-control']),
+            ],
+            
             'model',
             'made_year',
             'power',

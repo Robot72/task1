@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Products;
 use app\models\SearchProducts;
+use app\models\Brands;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -61,12 +62,14 @@ class ProductsController extends Controller
     public function actionCreate()
     {
         $model = new Products();
-
+        $brands = Brands::find()->all();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'brands' => $brands,
             ]);
         }
     }
@@ -80,12 +83,14 @@ class ProductsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $brands = Brands::find()->all();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'brands' => $brands,
             ]);
         }
     }
@@ -117,5 +122,5 @@ class ProductsController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
+    }    
 }

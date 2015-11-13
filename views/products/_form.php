@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -12,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_brand')->textInput() ?>
+    <?= $form->field($model, 'id_brand')->dropDownList(ArrayHelper::map($brands, 'id', 'name'))->label('Brand name') ?>
 
     <?= $form->field($model, 'model')->textInput(['maxlength' => true]) ?>
 
