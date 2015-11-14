@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Brands */
+/* @var $countries app\models\Countries */
 
 $this->title = 'Изменение бренда: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Бренды', 'url' => ['index']];
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Изменение';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'countries' => $countries
     ]) ?>
 
 </div>

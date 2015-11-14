@@ -37,9 +37,9 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Продукты', 'url' => ['/products']],
-            ['label' => 'Бренды', 'url' => ['/brands']],
-            ['label' => 'Страны', 'url' => ['/countries']],
+            ['label' => 'Продукты', 'url' => ['/products/index']],
+            ['label' => 'Бренды', 'url' => ['/brands/index']],
+            ['label' => 'Страны', 'url' => ['/countries/index']],
         ],
     ]);
     NavBar::end();

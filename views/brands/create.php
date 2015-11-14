@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Brands */
+/* @var $countries app\models\Countries */
 
 $this->title = 'Создать бренд';
 $this->params['breadcrumbs'][] = ['label' => 'Бренды', 'url' => ['index']];
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'countries' => $countries
     ]) ?>
 
 </div>

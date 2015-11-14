@@ -34,7 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             
             'model',
-            'made_year',
+            [
+                'class' => DataColumn::className(),
+                'attribute' => 'made_year',
+                'format' => ['date', 'Y'],
+                'filter' => false,
+            ],
             'power',
             // 'price',
 

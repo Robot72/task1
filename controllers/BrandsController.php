@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Brands;
 use app\models\SearchBrands;
+use app\models\Countries;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -61,12 +62,14 @@ class BrandsController extends Controller
     public function actionCreate()
     {
         $model = new Brands();
-
+        $countries = Countries::find()->all();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'countries' => $countries,
             ]);
         }
     }
@@ -80,12 +83,14 @@ class BrandsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $countries = Countries::find()->all();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'countries' => $countries,
             ]);
         }
     }

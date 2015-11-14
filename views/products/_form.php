@@ -3,9 +3,12 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use kartik\widgets\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Products */
+/* @var $brands app\models\Brands */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -13,11 +16,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_brand')->dropDownList(ArrayHelper::map($brands, 'id', 'name'))->label('Brand name') ?>
+    <?= $form->field($model, 'id_brand')->widget(Select2::className(), [
+        'data' => ArrayHelper::map($brands, 'id', 'name'),
+        'language' => 'ru',
+    ]) ?>
 
     <?= $form->field($model, 'model')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'made_year')->textInput() ?>
+    <?= $form->field($model, 'made_year')->widget(DatePicker::className(), [
+        'name' => 'made_year',
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'power')->textInput() ?>
 

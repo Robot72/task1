@@ -1,22 +1,14 @@
 В проекте использован Yii 2 Basic Project Template
 ============================
 
+Таблицы созданы и заполнены с использованием инструмента миграций, предоставляемого фреймворком.
+Мною добавлен маленький вспомогательный класс в /components/MigrationHelper
 
+Контроллеры, модели и представления сгенерированны инструментом Gii под таблицы Products, Brands, Countries.
 
+Для представлений создания и редактирования Products использованы расширения, написанные сторонним разработчиком:
+    1) kartik-v/yii2-widget-select2 - обертка JQuery плагина Select2. Использована для получения более удобного выподающего списка с брендами.
+    2) kartik-v/yii2-widget-datepicker - обертка JQuery плагина DatePicker.
 
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
+Для представлений создания и редактирования Products использованы расширения, написанные сторонним разработчиком:
+    1) kartik-v/yii2-widget-select2 - использована для получения удобного списка со странами. 
